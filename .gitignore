@@ -1,0 +1,59 @@
+# ==========================================
+# macOS System Files
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ==========================================
+# Docker & Environment Configuration
+# ==========================================
+# Exclude local environment files containing secrets/API keys
+.env
+.env.local
+.env.*.local
+
+# Generated runtime files from container entrypoint
+env.sh
+
+# ==========================================
+# IDE & Editor Directories
+# ==========================================
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+# JetBrains / Fleet / Zed
+.idea/
+.zed/
+
+# Sublime Text / Atom / TextMate
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Emacs backup files
+*~
+*.swp
+*.swo
+\#*\#
+.\#*
+
+# ==========================================
+# Operating Systems & Tools
+# ==========================================
+# Linux / Windows thumbnail caches
+Thumbs.db
+Thumbs.db:encrypt
+ehthumbs.db
+Desktop.ini
+
+# Logs and temporary files
+*.log
+tmp/
+temp/

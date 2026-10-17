@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  seerr-anime-router:
+    build: .
+    restart: unless-stopped
+    environment:
+      # Cron schedule (ex runs every 15 minutes)
+      - CRON_SCHEDULE=*/15 * * * *
+      
+      # Seerr Connection Details
+      - SEERR_URL=http://seerr:5055
+      - API_KEY=
+      
+      # Server ID Configuration
+      - SONARR_STANDARD_SERVER_ID=0
+      - SONARR_ANIME_SERVER_ID=1
+      - RADARR_STANDARD_SERVER_ID=0
+      - RADARR_ANIME_SERVER_ID=1
+      
+      # Toggles & Timezone
+      - ENABLE_AUTO_APPROVE=false
+      - TZ=Etc/UTC
+    read_only: true
+    user: "1000:1000"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:rw,exec,nosuid,nodev,size=64m
