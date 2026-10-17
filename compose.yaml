@@ -3,6 +3,7 @@ version: '3.8'
 services:
   seerr-anime-router:
     build: .
+    # image: ghcr.io/danclay/seerr-anime-router:latest
     restart: unless-stopped
     environment:
       # Cron schedule (ex runs every 15 minutes)
