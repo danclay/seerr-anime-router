@@ -6,8 +6,8 @@ services:
     # image: ghcr.io/danclay/seerr-anime-router:latest
     restart: unless-stopped
     environment:
-      # Cron schedule (ex runs every 15 minutes)
-      - CRON_SCHEDULE=*/15 * * * *
+      # Cron schedule (ex runs every 5 minutes)
+      - CRON_SCHEDULE=*/5 * * * *
       
       # Seerr Connection Details
       - SEERR_URL=http://seerr:5055
@@ -22,8 +22,9 @@ services:
       # Toggles & Timezone
       - ENABLE_AUTO_APPROVE=false
       - TZ=Etc/UTC
+      - ONLY_ERRORS=false # Only log errors and request reassignments
     read_only: true
-    user: "1000:1000"
+    user: "65534:65534"
     security_opt:
       - no-new-privileges:true
     cap_drop:
