@@ -1,6 +1,6 @@
 # Seerr Anime Request Router/Fixer
 
-This is a quickly vibecoded bash script run on an interval to fix when you have an individual anime Sonarr/Radarr instance and want requested media to be routed accordingly automatically. The most common usecase of this is when you follow Trash Guides and end up creating HD, 4K, and anime Sonarr/Radarr instances. Seerr only has built-in routing for 4K and non-4K, but not anime. This aims to fix that without trusting users to manually select the correct instance.
+This is a quickly vibecoded bash script run on an interval to fix when you have an individual anime Sonarr/Radarr instance and want requested media to be routed accordingly automatically. The most common usecase of this is when you follow Trash Guides and end up creating HD, 4K, and anime Sonarr/Radarr instances. Seerr only has built-in routing for 4K and non-4K, but not anime. This aims to fix that without trusting users to manually select the correct instance. I hope Seerr will implement anime routing soon. In the meantime, this is here.
 
 When a user requests an anime or show, this script will correct the request to be set to the according instance both ways. So if a user sets an anime to your non-anime instance, it will correct it. Likewise, if a user sets a non-anime to your anime instance, it will correct it. It will also auto-reject all 4K anime requests as anime is rarely released in 4K natively.
 
