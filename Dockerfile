@@ -2,7 +2,7 @@ FROM alpine:3.24
 
 ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.2.50
 ENV SUPERCRONIC_SHA1SUM_AMD64=0795da10bf6303e9680a2c2bd8dd6b9aa33ebda2
-ENV SUPERCRONIC_SHA1SUM_ARM64=1d03803120f035569dc528cee117b9220ee959b8
+ENV SUPERCRONIC_SHA1SUM_ARM64=e0023a0346354a153a4a2708c657308890823d14
 
 RUN apk add --no-cache bash curl jq tzdata ca-certificates && \
     ARCH=$(uname -m) && \
@@ -12,8 +12,11 @@ RUN apk add --no-cache bash curl jq tzdata ca-certificates && \
     elif [ "$ARCH" = "aarch64" ]; then \
       SUPERCRONIC_BIN="supercronic-linux-arm64" && \
       SUPERCRONIC_SHA1=$SUPERCRONIC_SHA1SUM_ARM64; \
+    else \
+      echo "Unsupported architecture: $ARCH" && exit 1; \
     fi && \
     curl -fsSL "${SUPERCRONIC_URL}/${SUPERCRONIC_BIN}" -o /usr/local/bin/supercronic && \
+    echo "${SUPERCRONIC_SHA1}  /usr/local/bin/supercronic" | sha1sum -c - && \
     chmod +x /usr/local/bin/supercronic
 
 WORKDIR /app
